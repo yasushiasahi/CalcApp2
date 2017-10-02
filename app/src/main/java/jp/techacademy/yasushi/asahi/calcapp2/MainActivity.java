@@ -1,5 +1,6 @@
 package jp.techacademy.yasushi.asahi.calcapp2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,7 +13,6 @@ import static android.R.id.text1;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView answer;
     EditText text1;
     EditText text2;
 
@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button buttonDivide = (Button) findViewById(R.id.buttonDivide);
         buttonDivide.setOnClickListener(this);
 
-        answer = (TextView) findViewById(R.id.answer);
         text1 = (EditText) findViewById(R.id.text1);
         text2 = (EditText) findViewById(R.id.text2);
     }
@@ -53,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             result = double1 / double2;
         }
-        answer.setText(String.valueOf(result));
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("RESULT", result);
+        startActivity(intent);
     }
 }
